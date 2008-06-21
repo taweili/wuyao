@@ -25,12 +25,38 @@ describe Wuyao::Parse do
   end
   
   describe "response from friends.get" do
-    it "should return an array of Friend" do
+    it "should return an array of two Friend" do
       result = Wuyao::Parse.new.process(friends_get_response_xml)
       result.size.should eql(2)
       result[0].uid.should eql("kangtk79")
       result[1].uid.should eql("ekangtk")
     end
+  end
+  
+  describe "response from Photos.getHome" do
+    it "should return an array of two Photo" do
+      result = Wuyao::Parse.new.process(photos_get_home_response_xml)
+      result.size.should eql(2)
+      result[0].id.should eql("100058274")
+      result[0].url.should eql("http://images18.51.com/1001/c/ce/25/kangtk/1201492196_99914700.jpg")
+    end
+  end
+  
+  
+  def photos_get_home_response_xml
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <photos_getHome_response xmlns=""  xmlns:xsi=""  xsi:schemaLocation="" list="true">
+	<photo>
+	  <id>100058274</id>
+	  <url>http://images18.51.com/1001/c/ce/25/kangtk/1201492196_99914700.jpg</url>
+	</photo>
+	<photo>
+	  <id>100058149</id>
+	  <url>http://images18.51.com/1002/a/ce/25/kangtk/1201333915_77163700.jpg</url>
+	</photo>
+      </photos_getHome_response>
+    XML
   end
   
   def users_get_logged_in_user_response_xml
