@@ -14,7 +14,7 @@ describe Wuyao::Parse do
   end
   
   describe "response from Friends.areFriends" do
-    it "should return an array of Users" do
+    it "should return an array of two FriendInfo" do
       result = Wuyao::Parse.new.process(friends_are_friends_xml)
       result.size.should eql(2)
       result[0].uid1.should eql("kangtk")
@@ -23,7 +23,15 @@ describe Wuyao::Parse do
       result[0].are_friends_reverse.should eql("0")
     end
   end
-
+  
+  describe "response from friends.get" do
+    it "should return an array of Friend" do
+      result = Wuyao::Parse.new.process(friends_get_response_xml)
+      result.size.should eql(2)
+      result[0].uid.should eql("kangtk79")
+      result[1].uid.should eql("ekangtk")
+    end
+  end
   
   def users_get_logged_in_user_response_xml
     <<-XML
@@ -57,6 +65,20 @@ describe Wuyao::Parse do
 	  <are_friends_reverse>1</are_friends_reverse>
 	</friend_info>
       </friends_areFriends_response>
+    XML
+  end
+  
+  def friends_get_response_xml
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <friends_get_response xmlns=""  xmlns:xsi=""  xsi:schemaLocation="" list="true">
+	<friend>
+	  <uid>kangtk79</uid>
+	</friend>
+	<friend>
+	  <uid>ekangtk</uid>
+	</friend>
+      </friends_get_response>
     XML
   end
 end

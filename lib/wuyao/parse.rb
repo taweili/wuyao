@@ -29,6 +29,7 @@ module Wuyao
         [ 
          Wuyao::LoggedinUserInfo,
          Wuyao::FriendInfo,
+         Wuyao::Friend
         ]
       end
       

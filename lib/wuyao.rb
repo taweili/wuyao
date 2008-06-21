@@ -3,6 +3,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 
 require "wuyao/models/loggedin_user_info"
 require "wuyao/models/friend_info"
+require "wuyao/models/friend"
 
 module Wuyao
   
