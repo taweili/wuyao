@@ -30,7 +30,10 @@ module Wuyao
          Wuyao::LoggedinUserInfo,
          Wuyao::FriendInfo,
          Wuyao::Friend,
-         Wuyao::Photo
+         Wuyao::Photo,
+         Wuyao::Album,
+         Wuyao::User,
+         Wuyao::Home
         ]
       end
       

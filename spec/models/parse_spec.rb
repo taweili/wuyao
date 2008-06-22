@@ -42,6 +42,123 @@ describe Wuyao::Parse do
     end
   end
   
+  describe "response from Photos.getAlbums" do
+    it "should return an array of 4 albums" do
+      result = Wuyao::Parse.new.process(photos_get_albums_response_xml)
+      result.size.should eql(4)
+      result[0].aid.should eql("19141")
+      result[1].aid.should eql("19142")
+      result[2].status.should eql("0")
+      result[0].name.should eql("我的照片")
+    end
+  end
+  
+  describe "response from Users.getInfo" do
+    it "should return an array of 1 User" do
+      result = Wuyao::Parse.new.process(users_get_info_response_xml)
+      result.size.should eql(1)
+      result[0].uid.should eql("kangtk")
+      result[0].nickname.should eql("康泰克")
+      result[0].sex.should eql("1")
+    end
+  end
+  
+  describe "response from Homes.getInfo" do
+    it "should return an array of 1 User" do
+      result = Wuyao::Parse.new.process(homes_get_info_response_xml)
+      result.size.should eql(1)
+      result[0].uid.should eql("kangtk")
+      result[0].title.should eql("众志成城、抗震救灾")
+      result[0].music.should eql(nil)
+    end
+  end
+
+  def homes_get_info_response_xml
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <homes_getInfo_response xmlns=""  xmlns:xsi=""  xsi:schemaLocation="" list="true">
+	<home>
+	  <uid>kangtk</uid>
+	  <title>众志成城、抗震救灾</title>
+	  <music></music>
+	  <bgphoto></bgphoto>
+	</home>
+      </homes_getInfo_response>
+    XML
+  end
+
+  # NOTE: <user>kangtk</user> is not handled
+  def users_get_info_response_xml
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <users_getInfo_response xmlns="" xmlns:xsi="" xsi:schemaLocation="" list="true">
+	<user>
+	  <uid>kangtk</uid>
+	  <nickname>康泰克</nickname>
+	  <facebig>http://userface3.51.com/ce/25/kangtk_130.gif?v=20071208033821</facebig>
+	  <sex>1</sex>
+	  <vip>3</vip>
+	  <isconfirm>1</isconfirm>
+	</user>
+      </users_getInfo_response>
+    XML
+  end
+
+  def photos_get_albums_response_xml
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <photos_getAlbums_response xmlns=""  xmlns:xsi=""  xsi:schemaLocation="" list="true">
+	<album>
+	  <aid>19141</aid>
+	  <name>我的照片</name>
+	  <status>0</status>
+	</album>
+	<album>
+	  <aid>19142</aid>
+	  <name>朋友的照片</name>
+	  <status>0</status>
+	</album>
+	<album>
+	  <aid>19143</aid>
+	  <name>卡通动漫</name>
+	  <status>0</status>
+	</album>
+	<album>
+	  <aid>19144</aid>
+	  <name>风景名胜</name>
+	  <status>0</status>
+	</album>
+      </photos_getAlbums_response>
+    XML
+  end
+
+  def photos_get_albums_response
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <photos_getAlbums_response xmlns=""  xmlns:xsi=""  xsi:schemaLocation="" list="true">
+	<album>
+	  <aid>19141</aid>
+	  <name>我的照片</name>
+	  <status>0</status>
+	</album>
+	<album>
+	  <aid>19142</aid>
+	  <name>朋友的照片</name>
+	  <status>0</status>
+	</album>
+	<album>
+	  <aid>19143</aid>
+	  <name>卡通动漫</name>
+	  <status>0</status>
+	</album>
+	<album>
+	  <aid>19144</aid>
+	  <name>风景名胜</name>
+	  <status>0</status>
+	</album>
+      </photos_getAlbums_response>
+    XML
+  end
   
   def photos_get_home_response_xml
     <<-XML
