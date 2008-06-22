@@ -1,5 +1,5 @@
 require 'xiaonei'
-module Xiaonei
+module Wuyao
   module Rails
     module Controller
       def self.included(controller)

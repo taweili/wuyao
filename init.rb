@@ -1,16 +1,16 @@
-xiaonei_config = "#{RAILS_ROOT}/config/xiaonei.yml"
+wuyao_config = "#{RAILS_ROOT}/config/wuyao.yml"
 
-require 'xiaonei'
-require "xiaonei/rails/controller"
-require "xiaonei/session"
+require 'wuyao'
+require "wuyao/rails/controller"
+require "wuyao/session"
 
 
-if File.exist?(xiaonei_config)
-  XIAONEI = YAML.load_file(xiaonei_config)[RAILS_ENV] 
-  ENV['XIAONEI_API_KEY'] = XIAONEI['api_key']
-  ENV['XIAONEI_SECRET_KEY'] = XIAONEI['secret_key']
-  ENV['XIAONEI_RELATIVE_URL_ROOT'] = XIAONEI['canvas_page_name']
-  ActionController::Base.asset_host = XIAONEI['callback_url']
+if File.exist?(wuyao_config)
+  WUYAO = YAML.load_file(wuyao_config)[RAILS_ENV] 
+  ENV['WUYAO_API_KEY'] = WUYAO['api_key']
+  ENV['WUYAO_SECRET_KEY'] = WUYAO['secret_key']
+  ENV['WUYAO_RELATIVE_URL_ROOT'] = WUYAO['canvas_page_name']
+  ActionController::Base.asset_host = WUYAO['callback_url']
 end
 
-ActionController::Base.send(:include,Xiaonei::Rails::Controller) 
+ActionController::Base.send(:include,Wuyao::Rails::Controller) 
