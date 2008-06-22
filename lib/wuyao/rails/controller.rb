@@ -1,4 +1,4 @@
-require 'xiaonei'
+require 'wuyao'
 module Wuyao
   module Rails
     module Controller
@@ -6,15 +6,15 @@ module Wuyao
         controller.extend(ClassMethods) 
       end
       
-      attr_reader :xiaonei_session 
+      attr_reader :wuyao_session 
       
-      def set_xiaonei_session
-        @xiaonei_session ||= Session.new(params)
+      def set_wuyao_session
+        @wuyao_session ||= Session.new(params)
       end
       
       module ClassMethods
-        def acts_as_xiaonei_controller
-          before_filter :set_xiaonei_session
+        def acts_as_wuyao_controller
+          before_filter :set_wuyao_session
         end
       end
     end

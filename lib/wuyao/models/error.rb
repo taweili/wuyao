@@ -1,20 +1,16 @@
 require "wuyao/model"
 
 module Wuyao
-  class Home < Model
+  class Error < Model
     
     def self.elm_name
-      "home"
+      "error"
     end
     
     def self.attr_names
       [
-       :uid,
-       :title,
-       :music,
-       :bgphoto,
-       :close,
-       :islock
+       :error_code,
+       :error_msg
       ]
     end
 

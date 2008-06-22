@@ -9,7 +9,7 @@ module Wuyao
     
     private
     def url
-      URI.parse('http://api.xiaonei.com/restserver.do')
+      URI.parse('http://sandbox.api.51.com/restserver_0_1.php')
     end
   end
 end

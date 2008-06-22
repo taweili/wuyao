@@ -10,7 +10,16 @@ module Wuyao
     def self.attr_names
       [
        :id,
-       :url
+       :pid,
+       :aid,
+       :url,
+       :owner,
+       :src_big,
+       :src_small,
+       :link,
+       :caption,
+       :description,
+       :created
       ]
     end
 

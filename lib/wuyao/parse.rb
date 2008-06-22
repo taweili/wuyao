@@ -4,7 +4,7 @@ require 'pp'
 
 module Wuyao
   class Parse
-    DEBUG = false
+    DEBUG = true
     class MyListener
       include REXML::StreamListener
       attr_accessor :result
@@ -33,7 +33,8 @@ module Wuyao
          Wuyao::Photo,
          Wuyao::Album,
          Wuyao::User,
-         Wuyao::Home
+         Wuyao::Home,
+         Wuyao::Error
         ]
       end
       
@@ -110,6 +111,14 @@ module Wuyao
       end
       
       def text(text)
+        pp("  text[begin] --- #{text} --- #{@stack.inspect}") if DEBUG
+        if (t = text.strip) != ""
+          @stack.push t
+        end
+        pp("  text[begin] --- #{text} --- #{@stack.inspect}") if DEBUG
+      end
+      
+      def cdata(text)
         if (t = text.strip) != ""
           @stack.push t
         end

@@ -8,6 +8,7 @@ require "wuyao/models/photo"
 require "wuyao/models/album"
 require "wuyao/models/user"
 require "wuyao/models/home"
+require "wuyao/models/error"
 
 module Wuyao
   

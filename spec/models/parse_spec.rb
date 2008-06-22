@@ -22,6 +22,16 @@ describe Wuyao::Parse do
       result[0].are_friends.should eql("1")
       result[0].are_friends_reverse.should eql("0")
     end
+    
+    it "should return an array of two FriendInfo" do
+      result = Wuyao::Parse.new.process(friends_are_friends_srv_xml)
+      result.size.should eql(1)
+      result[0].uid1.should eql("taweili")
+      result[0].uid2.should eql("kangtk")
+      result[0].are_friends.should eql("1")
+      result[0].are_friends_reverse.should eql("1")
+    end
+    
   end
   
   describe "response from friends.get" do
@@ -72,17 +82,51 @@ describe Wuyao::Parse do
       result[0].music.should eql(nil)
     end
   end
+  
+  describe "Error response" do
+    it "should handle error" do
+      result = Wuyao::Parse.new.process(homes_get_info_response_xml)
+      result.size.should eql(1)
+    end
+  end
+
+  
+  def error_xml
+    <<-XML
+      <?xml version='1.0' encoding='UTF-8'?>
+      <root xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='' list='true'>
+        <error>
+          <error_code>104</error_code>
+          <error_msg>Incorrect signature. </error_msg>
+        </error>
+      </root>
+    XML
+  end
 
   def homes_get_info_response_xml
     <<-XML
       <?xml version="1.0" encoding="UTF-8"?>
-      <homes_getInfo_response xmlns=""  xmlns:xsi=""  xsi:schemaLocation="" list="true">
-	<home>
-	  <uid>kangtk</uid>
-	  <title>众志成城、抗震救灾</title>
-	  <music></music>
-	  <bgphoto></bgphoto>
-	</home>
+      <homes_getInfo_response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="" list="true">
+        <home>
+          <uid>
+            <![CDATA[taweili]]>
+          </uid>
+          <title>
+            <![CDATA[]]>
+          </title>
+          <music>
+            <![CDATA[]]>
+          </music>
+          <user>
+            <![CDATA[taweili]]>
+          </user>
+          <close>
+            <![CDATA[0]]>
+          </close>
+          <islock>
+            <![CDATA[0]]>
+          </islock>
+        </home>
       </homes_getInfo_response>
     XML
   end
@@ -188,6 +232,28 @@ describe Wuyao::Parse do
           <token>321423534546575687</token>
         </loggedinuser_info>
       </users_getLoggedInUser_response>
+    XML
+  end
+  
+  def friends_are_friends_srv_xml
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <friends_areFriends_response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="" list="true">
+        <friend_info>
+          <uid1>
+            <![CDATA[taweili]]>
+          </uid1>
+          <uid2>
+            <![CDATA[kangtk]]>
+          </uid2>
+          <are_friends>
+            <![CDATA[1]]>
+          </are_friends>
+          <are_friends_reverse>
+            <![CDATA[1]]>
+          </are_friends_reverse>
+        </friend_info>
+      </friends_areFriends_response>
     XML
   end
   
