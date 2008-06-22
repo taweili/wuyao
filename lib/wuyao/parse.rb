@@ -67,7 +67,7 @@ module Wuyao
         pp("  tag_start[begin] --- #{name} --- #{attrs.inspect} --- #{@stack.inspect}") if DEBUG
         
         s_size = @stack.size
-        if k = elm_name_to_class(name)
+        if k = elm_name_to_class(name) and not @stack.last.kind_of?(Model)
           @stack.push(k.new)
         elsif attr_name?(name)
           @stack.push("#{name}=".to_sym)

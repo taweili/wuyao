@@ -77,8 +77,7 @@ describe Wuyao::Parse do
     it "should return an array of 1 User" do
       result = Wuyao::Parse.new.process(homes_get_info_response_xml)
       result.size.should eql(1)
-      result[0].uid.should eql("kangtk")
-      result[0].title.should eql("众志成城、抗震救灾")
+      result[0].uid.should eql("taweili")
       result[0].music.should eql(nil)
     end
   end
@@ -89,7 +88,6 @@ describe Wuyao::Parse do
       result.size.should eql(1)
     end
   end
-
   
   def error_xml
     <<-XML

@@ -14,7 +14,8 @@ module Wuyao
        :music,
        :bgphoto,
        :close,
-       :islock
+       :islock,
+       :user
       ]
     end
 
