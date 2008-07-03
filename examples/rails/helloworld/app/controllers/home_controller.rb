@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     # for JS only
     # test_method("fiveone.users.getLoggedInUser") 
     
-#     test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
+#    test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
     
 #     test_method("fiveone.friends.get", :uid => "taweili")
     
@@ -17,17 +17,19 @@ class HomeController < ApplicationController
     
 #     test_method("fiveone.photos.getHome", :uid => "kangtk") # friend
     
-#    test_method("fiveone.photos.getHome", :uid => "vivianaxi") # stranger
+#     test_method("fiveone.photos.getHome", :uid => "vivianaxi") # stranger
     
-#    albums = test_method("fiveone.photos.getAlbums", :uid => "taweili")
+#     albums = test_method("fiveone.photos.getAlbums", :uid => "taweili")
     
-#    test_method("fiveone.photos.get", :uid => "taweili", :aid => albums[0].aid)
+#     test_method("fiveone.photos.get", :uid => "taweili", :aid => albums[0].aid)
     
-#    test_method("fiveone.users.getInfo", :uid => "taweili", :fields => [:online, :vip, :face, :sex].join(","))
+    test_method("fiveone.users.getInfo", :uid => "taweili", :fields => Wuyao::User.attr_names.join(","))
 
-#    test_method("fiveone.homes.getInfo", :uid => "taweili", :fields => [:title, :music].join(","))
+#    test_method("fiveone.homes.getInfo", :uids => "taweili", :fields => Wuyao::Home.attr_names.join(","))
+
+#    test_method("fiveone.homes.getInfo", :uids => "taweili, kangtk", :fields => Wuyao::Home.attr_names.join(","))    
     
-    test_method("fiveone.homes.getInfo", :uid => "vivianaxi, taweili", :fields => [:title, :music].join(","))
+#     test_method("fiveone.homes.getInfo", :uid => "vivianaxi, taweili", :fields => [:title, :music].join(","))
   end
   
   protected

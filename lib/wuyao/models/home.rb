@@ -11,11 +11,7 @@ module Wuyao
       [
        :uid,
        :title,
-       :music,
-       :bgphoto,
-       :close,
-       :islock,
-       :user
+       :music
       ]
     end
 
