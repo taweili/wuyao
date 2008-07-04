@@ -4,7 +4,7 @@ module Wuyao
   class Error < Model
     
     def self.elm_name
-      "error"
+      "error_response"
     end
     
     def self.attr_names

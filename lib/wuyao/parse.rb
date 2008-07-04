@@ -66,6 +66,7 @@ module Wuyao
       def tag_start(name, attrs)
         pp("  tag_start[begin] --- #{name} --- #{attrs.inspect} --- #{@stack.inspect}") if DEBUG
         
+        @base64 = (attrs["enc"] == "base64")
         s_size = @stack.size
         if k = elm_name_to_class(name) and not @stack.last.kind_of?(Model)
           @stack.push(k.new)
@@ -111,17 +112,20 @@ module Wuyao
       end
       
       def text(text)
-        pp("  text[begin] --- #{text} --- #{@stack.inspect}") if DEBUG
+        pp("  text[begin] (#{@base64})--- #{text} --- #{@stack.inspect}") if DEBUG
         if (t = text.strip) != ""
-          @stack.push t
+          if @base64
+            @stack.push Base64.decode64(t)
+          else
+            @stack.push t
+          end
+
         end
         pp("  text[begin] --- #{text} --- #{@stack.inspect}") if DEBUG
       end
       
-      def cdata(text)
-        if (t = text.strip) != ""
-          @stack.push t
-        end
+      def cdata(data)
+        text(data)
       end
       
     end

@@ -10,7 +10,7 @@ module Wuyao
     def self.attr_names
       [
        :uid,
-       :username,
+       :user,
        :online,
        :vip,
        :meili,

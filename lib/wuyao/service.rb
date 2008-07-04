@@ -9,7 +9,8 @@ module Wuyao
     
     private
     def url
-      URI.parse('http://sandbox.api.51.com/restserver_0_1.php')
+      # URI.parse('http://sandbox.api.51.com/restserver_0_1.php')
+      URI.parse('http://sandbox.api.51.com/1.0/restserver.php?')
     end
   end
 end
