@@ -37,9 +37,6 @@ module Wuyao
       wuyao_params = tmp_params
       str = (wuyao_params.sort.collect { |c| "#{c[0]}=#{c[1]}" }).join("") + ENV['WUYAO_SECRET_KEY']
       
-      puts("#### #{tmp_params.inspect}")
-      puts("#### #{str}")
-      
       sig = Digest::MD5.hexdigest(str)
       
       tmp_params = { }
@@ -47,8 +44,6 @@ module Wuyao
       wuyao_params = tmp_params
       
       wuyao_params["51_sig"] = sig
-      
-      puts("#### #{wuyao_params.inspect}")
       
       Parse.new.process(Service.new.post(wuyao_params).body)
     end
