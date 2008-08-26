@@ -15,13 +15,20 @@ class HomeController < ApplicationController
 #    test_method("fiveone.users.getInfo", :uid => "taweili", :fields => [:username, :nickname].join(","))
     
 #    test_method("fiveone.users.invite", :invites => "taweili", :reason => CGI::escape(Base64.encode64("test")))
-    test_method("fiveone.users.invite", :invites => "taweili", :reason => "test")
+
+#    test_method("fiveone.users.invite", :invites => "taweili", :reason => "test")
     
-#    test_method("fiveone.users.leaveMsg", :receiver => "taweili", :message => "test", :hidden => "1")
+#     test_method("fiveone.users.leaveMsg", :receiver => "tuxedoking", :message => "test", :hidden => "1")
     
-    result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
+#     test_method("fiveone.users.leaveMsg", :receiver => "kangtk", :message => "test", :hidden => "1")
+
+#     test_method("fiveone.users.leaveMsg", :receiver => "taweili", :message => "test", :hidden => "1")
     
-#     result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
+#    result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
+    
+#    result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
+    
+#    result = test_method("fiveone.friends.getAppUsers", :uids1 => "taweili", :uids2 => "kangtk")
     
 #    test_method("fiveone.friends.get", :uid => "taweili")
     
@@ -30,8 +37,6 @@ class HomeController < ApplicationController
 #     test_method("fiveone.friends.get", :uid => "vivianaxi") # stranger
     
 #    test_method("fiveone.photos.getHome", :uid => "taweili")
-    
-#     test_method("fiveone.photos.getHome", :uid => "taweili")
     
 #     test_method("fiveone.photos.getHome", :uid => "kangtk") # friend
     

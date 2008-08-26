@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper.rb'
 require "wuyao/parse"
 
 describe Wuyao::Parse do
-
+  
   describe "response from Users.getLoggedInUser" do
     it "should return an array of one LoggedinUserInfo" do
       result = Wuyao::Parse.new.process(users_get_logged_in_user_response_xml)
@@ -81,12 +81,30 @@ describe Wuyao::Parse do
       result[0].music.should eql(nil)
     end
   end
-  
+
+  describe "response from users.leaveMsg" do
+    it "should get a result" do
+      result = Wuyao::Parse.new.process(users_invite_response_xml)
+      result.size.should eql(1)
+    end
+  end
+
   describe "Error response" do
     it "should handle error" do
       result = Wuyao::Parse.new.process(homes_get_info_response_xml)
       result.size.should eql(1)
     end
+  end
+  
+  def users_invite_response_xml
+    <<-XML
+      <?xml version="1.0" encoding="UTF-8"?>
+      <users_invite_response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="" >
+        <result>
+          <![CDATA[1]]>
+        </result>
+      </users_invite_response>
+    XML
   end
   
   def error_xml

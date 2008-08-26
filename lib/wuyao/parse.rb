@@ -39,7 +39,8 @@ module Wuyao
       end
       
       def array_elements
-        { 
+        {
+          "result" => UidArray
         }
       end
       

@@ -3,7 +3,7 @@ require 'pp'
 
 module Wuyao
   class Service
-    DEBUG = true
+    DEBUG = false
     def post(params)
       pp "params: #{params.inspect}" if DEBUG
       res = Net::HTTP.post_form(url, params)
