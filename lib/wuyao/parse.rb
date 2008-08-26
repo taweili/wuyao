@@ -4,7 +4,7 @@ require 'pp'
 
 module Wuyao
   class Parse
-    DEBUG = false
+    DEBUG = true
     class MyListener
       include REXML::StreamListener
       attr_accessor :result

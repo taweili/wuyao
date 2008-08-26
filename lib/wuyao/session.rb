@@ -28,7 +28,8 @@ module Wuyao
         :method => method,
         :app_key => api_key,
         :session_key => session_key,
-        :time => time
+        :time => time,
+        :sdk_from => "php"
       }
       wuyao_params.merge!(params) if params
 
