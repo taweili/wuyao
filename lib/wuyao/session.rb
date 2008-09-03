@@ -9,6 +9,8 @@ module Wuyao
     attr_reader :api_key
     attr_reader :in_iframe
     attr_reader :added
+
+    DEBUG = false
     
     def initialize(params)
       if params["51_sig_session_key"]
@@ -29,6 +31,7 @@ module Wuyao
         :app_key => api_key,
         :session_key => session_key,
         :time => time,
+        :version => "1.2",
         :sdk_from => "php"
       }
       wuyao_params.merge!(params) if params
@@ -37,7 +40,9 @@ module Wuyao
       wuyao_params.each { |k,v| tmp_params[k.to_s] = v }
       wuyao_params = tmp_params
       str = (wuyao_params.sort.collect { |c| "#{c[0]}=#{c[1]}" }).join("") + ENV['WUYAO_SECRET_KEY']
-      
+
+      pp("str = #{str}") if DEBUG
+
       sig = Digest::MD5.hexdigest(str)
       
       tmp_params = { }
@@ -46,6 +51,8 @@ module Wuyao
       
       wuyao_params["51_sig"] = sig
       
+      pp("wuyao_params = #{wuyao_params.inspect}") if DEBUG
+
       Parse.new.process(Service.new.post(wuyao_params).body)
     end
     

@@ -5,18 +5,18 @@ class HomeController < ApplicationController
     # for JS only
     # test_method("fiveone.users.getLoggedInUser") 
     
-#      for attr in Wuyao::User.attr_names - [:uid]
-#        logger.debug("##### #{attr} #####")
-#        test_method("fiveone.users.getInfo", :uid => "taweili", :fields => [attr].join(","))
-#      end
+#     for attr in Wuyao::User.attr_names - [:uid]
+#       logger.debug("##### #{attr} #####")
+#       test_method("fiveone.users.getInfo", :uid => "taweili", :fields => [attr].join(","))
+#     end
 
 #     test_method("fiveone.users.getInfo", :uid => "taweili", :fields => (Wuyao::User.attr_names - [:uid, :study, :online, :phone, :linktype, :link]).join(","))
     
-#    test_method("fiveone.users.getInfo", :uid => "taweili", :fields => [:username, :nickname].join(","))
+#     test_method("fiveone.users.getInfo", :uid => "taweili", :fields => [:username, :nickname].join(","))
     
-#    test_method("fiveone.users.invite", :invites => "taweili", :reason => CGI::escape(Base64.encode64("test")))
+#     test_method("fiveone.users.invite", :invites => "taweili", :reason => CGI::escape(Base64.encode64("test")))
 
-#    test_method("fiveone.users.invite", :invites => "taweili", :reason => "test")
+#     test_method("fiveone.users.invite", :invites => "taweili", :reason => "test")
     
 #     test_method("fiveone.users.leaveMsg", :receiver => "tuxedoking", :message => "test", :hidden => "1")
     
@@ -24,19 +24,19 @@ class HomeController < ApplicationController
 
 #     test_method("fiveone.users.leaveMsg", :receiver => "taweili", :message => "test", :hidden => "1")
     
-#    result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
+#     result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
     
-#    result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
+#     result = test_method("fiveone.friends.areFriends", :uids1 => "taweili", :uids2 => "kangtk")
     
-#    result = test_method("fiveone.friends.getAppUsers", :uids1 => "taweili", :uids2 => "kangtk")
+#     result = test_method("fiveone.friends.getAppUsers", :uids1 => "taweili", :uids2 => "kangtk")
     
-#    test_method("fiveone.friends.get", :uid => "taweili")
+#     test_method("fiveone.friends.get", :uid => "taweili")
     
 #     test_method("fiveone.friends.get", :uid => "kangtk") # friend
     
 #     test_method("fiveone.friends.get", :uid => "vivianaxi") # stranger
     
-#    test_method("fiveone.photos.getHome", :uid => "taweili")
+#     test_method("fiveone.photos.getHome", :uid => "taweili")
     
 #     test_method("fiveone.photos.getHome", :uid => "kangtk") # friend
     
